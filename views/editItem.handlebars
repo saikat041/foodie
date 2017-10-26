@@ -1,0 +1,28 @@
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+<h2 class="page-header">Edit Item</h2>
+<form method="post" action="/myshop/editItem">
+   <div class="form-group">
+    <label>Name</label>
+    <input type="text" class="form-control" placeholder="Name" name="name" value={{name}}>
+  </div>
+  <div class="form-group">
+   <label>description</label>
+   <textarea  rows="1" class="form-control" placeholder="Description" name="description" >{{description}}</textarea>
+ </div>
+  <div class="form-group">
+   <label>Price</label>
+   <input type="text" class="form-control" placeholder="Price" name="price" value={{price}}>
+ </div>
+ <div class="form-group">
+  <label>Image</label>
+  <input type="text" class="form-control" placeholder="Image URL" name="image" value={{image}}>
+</div>
+  <input type="hidden" name="index" value={{index}}>
+  <button type="submit" class="btn btn-default">Save</button>
+</form>
+</div>
+</div>
+</div>

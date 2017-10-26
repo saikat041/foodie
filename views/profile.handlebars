@@ -1,0 +1,23 @@
+
+<div class="container">
+<h2 class="page-header">Profile</h2>
+<form method="post" action="/profile">
+   <div class="form-group">
+    <label>Name</label>
+    <textarea name="name" rows="1" class="form-control" placeholder="Name">{{user.name}}</textarea>
+  </div>
+  <div class="form-group">
+   <label>Shop</label>
+   <textarea name="shop" rows="1" class="form-control" placeholder="Shop">{{user.shop}}</textarea>
+ </div>
+ <div class="form-group">
+  <label>Description</label>
+  <textarea name="description" rows="1" class="form-control" placeholder="Description">{{user.description}}</textarea>
+</div>
+<div class="form-group">
+ <label>Image</label>
+ <textarea name="image" rows="1" class="form-control" placeholder="Image URL">{{user.image}}</textarea>
+</div>
+  <button type="submit" class="btn btn-default">Save</button>
+</form>
+</div>

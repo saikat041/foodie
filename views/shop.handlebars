@@ -1,0 +1,57 @@
+
+<div class="container">
+<div class="centre shopName">
+  <span class="text-capitalize">{{shop.name}}</span>
+</div>
+<span id="buyer" class="invisible">{{user.email}}</span>
+<span id="seller" class="invisible">{{shop.owner}}</span>
+<span id="shop" class="invisible">{{shop.name}}</span>
+<div class="row items">
+  {{#each shop.items}}
+    <div class="col-md-4   mx-auto">
+
+      <div class="item">
+
+        <img src= {{this.image}} onerror="this.onerror=null;this.src='images/image1.jpg';" alt="Some Image" style="height:150px;width:100%">
+        <h3 class="text-capitalize">{{this.name}}</h3>
+
+        <div class="description">
+          <p>{{this.description}}</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-3 price">
+              Price:<span>{{this.price}}</span>
+          </div>
+            <div class="col-lg-3">
+              Quantity:
+            </div>
+            <div class="col-lg-3 quantity">
+              <input type="number" name="qty" value="1" style="width:100%">
+            </div>
+          <div class="col-lg-3">
+            <button type="button" name="button" class="btn btn-primary btn-block" onclick="addToCart(this)"  data-index= {{@index}} data-name={{this.name}}>Add</button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  {{/each}}
+</div>
+</div>
+<script type="text/javascript">
+  var socket=io();
+  function addToCart(ele) {
+    var name=ele.dataset.name;
+    var buyer=$('#buyer').html();
+    var seller=$('#seller').html();
+    var shop=$('#shop').html();
+    var price=Number($(ele).parents('.item').children('.row').children('.price').children('span').html());
+    var qty=Number($(ele).parents('.item').children('.row').children('.quantity').children('input').val());
+    var cart={"seller":seller,"buyer":buyer,"shop":shop,items:[{"name":name,"price":price,"qty":qty}]};
+    socket.emit('addToCart',cart);
+}
+</script>

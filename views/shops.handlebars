@@ -1,0 +1,26 @@
+<div class="container">
+<div class="centre shopName">
+  <span class="text-capitalize">Shops</span>
+</div>
+
+  <div class="row items">
+    {{#each shops}}
+    <div class="col-md-4   mx-auto ">
+      <div class="item clearfix">
+
+      <img src={{this.image}} onerror="this.onerror=null;this.src='images/image1.jpg';" alt="Some Image" style="height:150px;width:100%">
+      <h3 class="text-capitalize">{{this.name}}</h3>
+      <div class="description">
+      <p>{{this.description}}</p>
+      </div>
+      <div style="display:inline">
+         Owner :{{this.ownerName}}
+      </div>
+      <a href="{{concat1 @index}}" class="btn btn-primary float-right">Go</a>
+
+      </div>
+    </div>
+    {{/each}}
+  </div>
+
+</div>

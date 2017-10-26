@@ -1,0 +1,28 @@
+<div class="container">
+<div class="centre shopName">
+  <span class="text-capitalize">{{user.shop}}</span>
+</div>
+<div class="centre">
+  <a href="/myshop/addItem" class="btn btn-primary addItem">Add Item</a>
+</div>
+
+  <div class="row items">
+    {{#each items}}
+    <div class="col-md-4   mx-auto ">
+      <div class="item clearfix ">
+      <img src={{this.image}} onerror="this.onerror=null;this.src='images/image1.jpg';" alt="Some Image" style="height:150px;width:100%">
+      <h3 class="text-capitalize">{{this.name}}</h3>
+      <div class="description">
+      <p>{{this.description}}</p>
+      </div>
+      <div class="price">
+         Price :{{this.price}}
+      </div>
+      <a href="{{concat @index}}" class="btn btn-primary float-right">Edit</a>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+
+
+</div>

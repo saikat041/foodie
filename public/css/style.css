@@ -1,0 +1,32 @@
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
+.centre{
+  text-align: center;
+}
+
+
+.item{
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+margin-bottom: 50px;
+padding:5px;
+}
+
+.description{
+  height: 100px;
+  margin-bottom: 10px;
+  overflow: scroll;
+}
+
+
+.shopName{
+  font-size: 30px;
+  font-family: cursive;
+  margin-top:10px;
+}
+
+.addItem{
+margin: 15px;
+}

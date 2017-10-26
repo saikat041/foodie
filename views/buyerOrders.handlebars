@@ -1,0 +1,28 @@
+<div class="container clearfix" style="margin-top:10px">
+  {{#each orders}}
+  <div>
+  <h3>{{this.shop}}</h3>
+  <h6>{{this.date}}</h6>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each this.items}}
+      <tr class="tr">
+        <th>{{this.name}}</th>
+        <td>{{this.price}}</td>
+        <td>{{this.qty}}</td>
+        <td>{{this.total}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  </div>
+  {{/each}}
+</div>

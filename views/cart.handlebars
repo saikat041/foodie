@@ -1,0 +1,65 @@
+
+<div class="container clearfix" style="margin-top:10px">
+  <span id='buyer' class="invisible">{{user.email}}</span>
+  <span id='name' class="invisible">{{user.name}}</span>
+  {{#each carts}}
+  <div>
+  <h3 class="d-inline">{{this.shop}}</h3>
+  <button type="button"  data-seller={{this.seller}}  class=" btn btn-success float-right buy">Buy</button>
+  <button type="button"  data-seller={{this.seller}}  data-index={{@index}} class="btn btn-danger  float-right d-inline remove">Remove</button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each this.items}}
+      <tr class="tr">
+        <th scope="row">{{this.name}}</th>
+        <td class="price">{{this.price}}</td>
+        <td ><input type="number" name="qty" value={{this.qty}} class="form-control qty" style="width:20% !important;"></td>
+        <td class="total">0</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  </div>
+  {{/each}}
+</div>
+
+<script>
+var socket=io();
+
+$('.buy').click(function () {
+var items=[];
+  $(this).parent().find('.tr').each(function () {
+    var item={name:$(this).children('th').html(),price:$(this).children('.price').html(),qty:$(this).find('.qty').val(),total:$(this).children('.total').html()};
+    if(item.qty>0)
+    items.push(item);
+  });
+var a={shop:$(this).parent().children('h3').html(),name:$('#name').html(),seller:$(this).data('seller'),buyer:$('#buyer').html(),items:items};
+socket.emit('buy',a);
+});
+
+$('.remove').click(function () {
+  socket.emit('remove',{buyer:$('#buyer').html(),index:$(this).data('index')});
+});
+
+socket.on('removed',function () {
+   location.reload();
+});
+
+$('.qty').keyup(function () {
+  $(this).parent().parent().children('.total').html($(this).parent().parent().children('.price').html()*$(this).val());
+});
+
+$('.tr').each(function () {
+$(this).children('.total').html($(this).children('.price').html()*$(this).find('.qty').val());
+});
+
+
+</script>
